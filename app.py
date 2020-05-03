@@ -38,5 +38,13 @@ def for_example():
     <input type = "submit">
     </form>'''
     
+@app.route('/json_example', methods = ["POST"])
+def json_example():
+    req_data = request.get_json()
+    name = req_data['name']
+    email = req_data['email']
+    return 'hello {} , your email is {}'.format(name,email)
+
+
 
 app.run(debug=True)
