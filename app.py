@@ -1,10 +1,24 @@
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, request , url_for 
 
 app = Flask(__name__)
 
+
+@app.route('/signup', methods=["POST","GET"])
+def signup():
+
+    if request.method == "POST":
+        userData = [{
+    "name": name,
+    "email": email,
+    }]
+
+        for i in userData:
+            return jsonify(i)
+
+
 @app.route('/')
 def index():
-    return "Hello World"
+    return  render_template('app.html')
 
 @app.route('/about')
 def message():
@@ -14,15 +28,16 @@ def message():
 
 @app.route('/html')
 def html():
-    return render_template('index.html')
+     
+     return render_template('index.html')
 
-@app.route('/signup', methods=["POST","GET"])
-def signup():
-    if request.method == "POST":
-        name1 = request.form.get('name')
-        email1 = request.form['email']
-        return jsonify( '''The User name is: {}
-                   The User email is: {},. '''.format(name1,email1))
+#@app.route('/signup', methods=["POST","GET"])
+#def signup():
+#    if request.method == "POST":
+ #       name1 = request.form.get('name')
+  #      email1 = request.form['email']
+   #     return jsonify( '''The User name is: {}
+    #               The User email is: {},. '''.format(name1,email1))
         
 @app.route('/forexample', methods=["POST","GET"])
 def for_example():
