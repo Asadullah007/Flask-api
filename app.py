@@ -8,8 +8,8 @@ def signup():
 
     if request.method == "POST":
         userData = [{
-    "name": name,
-    "email": email,
+    "name": request.form['name'],
+    "email": request.form['email'],
     }]
 
         for i in userData:
