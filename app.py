@@ -37,6 +37,7 @@ def for_example():
     email <input typye = "text" name = "email">
     <input type = "submit">
     </form>'''
+######## Post man Wala code ################
     
 @app.route('/json_example', methods = ["POST"])
 def json_example():
