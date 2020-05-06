@@ -118,41 +118,21 @@ def signup():
 def index():
     
     if request.method == "POST":
+       # "patient_reported_symptoms" : request.form['prs_fcs']  #,'prs_sob','prs_nwc','prs_st','prs_ba','prs_los','prs_none'
+       # "medical_history": request.form['mh_acld'] #,'mh_p','mh_dwc','mh_dc','mh_chf','mh_eo','mh_none'
+    
+
         userData = [{
-    "patient_reported_symptoms": request.form['prs_fcs'],
-    "medical_history": request.form['prs_fcs'],
-    "age": request.form['age'],
-    "gender": request.form['gender'],
-    "smoker": request.form['smoker']
+            
+            "age": request.form['age'],
+            "gender": request.form['gender'],
+            "smoker": request.form['smoker']
     
     }]
 
         
         return jsonify(userData)
 
-    return  render_template('app.html')
-
-@app.route('/html')
-def html():
-     
-     return render_template('index.html')
-
-#@app.route('/signup', methods=["POST","GET"])
-#def signup():
-#    if request.method == "POST":
- #       name1 = request.form.get('name')
-  #      email1 = request.form['email']
-   #     return jsonify( '''The User name is: {}
-    #               The User email is: {},. '''.format(name1,email1))
-'''        
-######## Post man Wala code ################
- '''   
-@app.route('/json_example', methods = ["POST"])
-def json_example():
-    req_data = request.get_json()
-    name = req_data['name']
-    email = req_data['email']
-    return 'hello {} , your email is {}'.format(name,email)
 
 
 
