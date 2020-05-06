@@ -59,16 +59,16 @@
 	<!-- Main -->
 	<section id="main" class="wrapper">
 		<div class="inner">
-			<form method="POST" enctype="multipart/form-data" id="myForm">
+			<form method="post" action="/signup" > <!--enctype="multipart/form-data" id="myForm" action="/index"-->
 				<!-- Break -->
 				<label><span class="is-required">*</span>Has the patient given consent for participating in this
 					research (link) ? </label>
 				<div class="4u 12u$(small)">
-					<input type="radio" id="demo-priority-low" name="research_consent" value="Yes" checked>
+					<input type="radio" id="demo-priority-low" name="consent_for_participating" value="Yes" checked>
 					<label for="demo-priority-low">Yes</label>
 				</div>
 				<div class="4u 12u$(small)">
-					<input type="radio" id="demo-priority-normal" name="research_consent" value="No">
+					<input type="radio" id="demo-priority-normal" name="consent_for_participating" value="No">
 					<label for="demo-priority-normal">No</label>
 				</div>
 				<!-- Break -->
@@ -122,15 +122,15 @@
 				<div class="row uniform">
 					<div class="12u 12u$(small)">
 						<label><span class="is-required">*</span>Corona Test</label>
-						<input type="radio" id="Positive" name="condition" value="Positive" checked>
+						<input type="radio" id="Positive" name="Corona_Test" value="Positive" checked>
 						<label for="Positive">Positive</label>
 					</div>
 					<div class="12u 12u$(small)">
-						<input type="radio" id="Negative" name="condition" value="Negative">
+						<input type="radio" id="Negative" name="Corona_Test" value="Negative">
 						<label for="Negative">Negative</label>
 					</div>
 					<div class="12u$ 12u$(small)">
-						<input type="radio" id="not tested" name="condition" value="Not tested">
+						<input type="radio" id="not tested" name="Corona_Test" value="Not tested">
 						<label for="not tested">Not tested</label>
 					</div>
 				</div>
@@ -161,34 +161,34 @@
 					<div class="6u 12u$(small)">
 						<label><span class="is-required">*</span>Patient Reported Symptoms </span><br><br>
 
-							<input type="checkbox" id="roundtrip1" name="reported_symptoms"
+							<input type="checkbox" id="roundtrip1" name="prs_fcs"
 								value="Fever, chills, or sweating">
 							<label for="roundtrip1">Fever, chills, or sweating</label>
 							<br>
 
-							<input type="checkbox" id="roundtrip2" name="reported_symptoms" value="Shortness of breath">
+							<input type="checkbox" id="roundtrip2" name="prs_sob" value="Shortness of breath">
 							<label for="roundtrip2">Shortness of breath</label>
 
 							<br>
-							<input type="checkbox" id="roundtrip3" name="reported_symptoms"
+							<input type="checkbox" id="roundtrip3" name="prs_nwc"
 								value="New or worsening cough">
 							<label for="roundtrip3"> New or worsening cough</label>
 							<br>
 
-							<input type="checkbox" id="roundtrip4" name="reported_symptoms" value="Sore throat">
+							<input type="checkbox" id="roundtrip4" name="prs_st" value="Sore throat">
 							<label for="roundtrip4">Sore throat</label>
 							<br>
 
-							<input type="checkbox" id="roundtrip9" name="reported_symptoms" value="Body aches">
+							<input type="checkbox" id="roundtrip9" name="prs_ba" value="Body aches">
 							<label for="roundtrip9">Body aches</label>
 
 							<br>
 
-							<input type="checkbox" id="roundtrip7" name="reported_symptoms" value="Loss of smell">
+							<input type="checkbox" id="roundtrip7" name="prs_los" value="Loss of smell">
 							<label for="roundtrip7">Loss of smell</label>
 							<br>
 
-							<input type="checkbox" id="roundtrip8" name="reported_symptoms" value="None">
+							<input type="checkbox" id="roundtrip8" name="prs_none" value="None">
 							<label for="roundtrip8">None</label>
 
 					</div>
@@ -263,7 +263,7 @@
 						<!-- Break -->
 						<div class="12u$">
 							<ul class="actions">
-								<li><input type="button" value="Submit" id="submit" onclick="submit_data()" /></li>
+								<li><input type="submit" value="Submit" id="submit"/></li>     <!--onclick="submit_data()"-->
 								<li><input type="reset" value="Reset" /></li>
 							</ul>
 						</div>
