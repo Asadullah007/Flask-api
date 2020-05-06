@@ -23,18 +23,26 @@ class Contact(db.Model):
     prs_fcs = db.Column(db.String(50), nullable=True)
     prs_sob = db.Column(db.String(50), nullable=True)
     prs_nwc = db.Column(db.String(50), nullable=True)
-    #prs_st = db.Column(db.String(20), nullable=True)
+    prs_st = db.Column(db.String(50), nullable=True)
     prs_ba = db.Column(db.String(50), nullable=True)
     prs_los = db.Column(db.String(50), nullable=True)
     prs_none = db.Column(db.String(50), nullable=True)
-    #mh_acld = db.Column(db.String(20), nullable=True)
+    mh_acld = db.Column(db.String(50), nullable=True)
+    mh_p = db.Column(db.String(50), nullable=True)
+    mh_dwc = db.Column(db.String(50), nullable=True)
+    mh_dc = db.Column(db.String(50), nullable=True)
+    mh_chf = db.Column(db.String(50), nullable=True)
+    mh_eo = db.Column(db.String(50), nullable=True)
+    mh_none = db.Column(db.String(50), nullable=True)
+    smoker = db.Column(db.String(50), nullable=False)
+    patient_location = db.Column(db.String(50), nullable=False)
      
     
 
 
 
 
-@app.route('/app', methods = ['GET', 'POST'])
+@app.route('/', methods = ['GET', 'POST'])
 def appform():
     if(request.method=='POST'):
         '''Add entry to the database'''
@@ -47,11 +55,21 @@ def appform():
         prs_fcs = request.form.get('prs_fcs')
         prs_sob = request.form.get('prs_sob')
         prs_nwc = request.form.get('prs_nwc')
-        #prs_st  = request.form.get('prs_st ')
+        prs_st  = request.form.get('prs_st ')
         prs_ba = request.form.get('prs_ba')
         prs_los = request.form.get('prs_los')
         prs_none = request.form.get('prs_none')
-        
+
+        mh_acld = request.form.get('mh_acld') 
+        mh_p = request.form.get('mh_p')
+        mh_dwc = request.form.get('mh_dwc')
+        mh_dc = request.form.get('mh_dc')
+        mh_chf = request.form.get('mh_chf')
+        mh_eo = request.form.get('mh_eo')
+        mh_none = request.form.get('mh_none')
+        smoker = request.form.get('smoker')
+        patient_location = request.form.get('patient_location')
+         
         entry = Contact(consent_for_participating=consent_for_participating,
                          gender=gender,
                          country=country,
@@ -61,10 +79,19 @@ def appform():
                          prs_fcs=prs_fcs,
                          prs_sob=prs_sob,
                          prs_nwc=prs_nwc,
-                         #prs_st=prs_st,
+                         prs_st=prs_st,
                          prs_ba=prs_ba,
                          prs_los=prs_los,
-                         prs_none=prs_none
+                         prs_none=prs_none,
+                         mh_acld=mh_acld,
+                         mh_p=mh_p,
+                         mh_dwc=mh_dwc,
+                         mh_dc=mh_dc,
+                         mh_chf=mh_chf,
+                         mh_eo=mh_eo,
+                         mh_none=mh_none,
+                         smoker=smoker,
+                         patient_location=patient_location
                          )
         db.session.add(entry)
         db.session.commit()
@@ -74,7 +101,7 @@ def appform():
 
 
 
-@app.route('/signup', methods=["POST","GET"])
+@app.route('/', methods=["POST","GET"])
 def signup():
 
     if request.method == "POST":
@@ -87,13 +114,17 @@ def signup():
         return jsonify(userData)
 
 
-@app.route('/' , methods=["POST","GET"])
+@app.route('/signup' , methods=["POST","GET"])
 def index():
     
     if request.method == "POST":
         userData = [{
-    "name": request.form['name'],
-    "email": request.form['email'],
+    "patient_reported_symptoms": request.form['prs_fcs'],
+    "medical_history": request.form['prs_fcs'],
+    "age": request.form['age'],
+    "gender": request.form['gender'],
+    "smoker": request.form['smoker']
+    
     }]
 
         
@@ -113,22 +144,9 @@ def html():
   #      email1 = request.form['email']
    #     return jsonify( '''The User name is: {}
     #               The User email is: {},. '''.format(name1,email1))
-        
-@app.route('/forexample', methods=["POST","GET"])
-def for_example():
-    if request.method == "POST":
-        name = request.form.get('name')
-        email = request.form['email']
-        return  '''The User name is: {}
-                   The User email is: {},. '''.format(name,email)
-   
-    return '''<form method ='POST'>
-    name <input typye = "text" name = "name">
-    email <input typye = "text" name = "email">
-    <input type = "submit">
-    </form>'''
+'''        
 ######## Post man Wala code ################
-    
+ '''   
 @app.route('/json_example', methods = ["POST"])
 def json_example():
     req_data = request.get_json()
